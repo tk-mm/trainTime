@@ -26,7 +26,7 @@ end
 stream_client.user do |status|
   next unless status.is_a? Twitter::Tweet
   next if status.text.start_with? "RT"
-  if status.text =~ /^@hyuzu$/
+  if status.text =~ /^test01$/
     t = Time.now
     date = t.strftime("%w")
     time = t.strftime("%H")
@@ -34,6 +34,14 @@ stream_client.user do |status|
     tweet = "@#{status.user.screen_name} #{data(date, time)}"
     client.update tweet, option
   end                     
+  if status.text =~ /^test02$/
+    t = Time.now
+    date = t.strftime("%w")
+    time = t.strftime("%H")
+    option = {"in_reply_to_status_id" => status.id.to_s }
+    tweet = "@#{status.user.screen_name} #{data(date, time)}"
+    client.update tweet, option
+  end                         
 end
 
 # 現在時からその時間帯の電車を表示
