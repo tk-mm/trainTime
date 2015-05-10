@@ -62,7 +62,7 @@ end
 stream_client.user do |status|
   next unless status.is_a? Twitter::Tweet
   next if status.text.start_with? "RT"
-  if status.text =~ /^@hyuz_帰る$/
+  if status.text =~ /^@×××××帰る$/
     t = Time.now
     date = t.strftime("%w")
     time = t.strftime("%H")
