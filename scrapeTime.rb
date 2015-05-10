@@ -4,10 +4,10 @@ require 'twitter'
 require 'nokogiri'
 require 'open-uri'
 
-C_KEY = 'zgfdFHTvcCd3dZnRpWGqh7vA2'
-C_SECRET = 'KB0bomQ3ejxtOMlzn4gK8sAEYsuA9iDxTRky3uT1H8wL3xKXRV'
-A_TOKEN = '1015317498-pTB9nPZ6iWBnoacva0D715l9UfTQbzRh4Dz31jo'
-A_T_SECRET = 'ecEbeQIwk4N5ZubtKs08puxXoiJAWA2jsW2H7cPrWCdzX'
+C_KEY = ''
+C_SECRET = ''
+A_TOKEN = ''
+A_T_SECRET = ''
 
 client = Twitter::REST::Client.new do |config|
   config.consumer_key = C_KEY
