@@ -1,0 +1,13 @@
+/Users/TAKASHI/.rbenv/versions/2.0.0-dev/bin/ruby -r ./siteconf20150510-20195-20echs.rb extconf.rb
+creating Makefile
+
+make "DESTDIR=" clean
+
+make "DESTDIR="
+compiling ruby_http_parser.c
+compiling ryah_http_parser.c
+linking shared-object ruby_http_parser.bundle
+
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 ruby_http_parser.bundle ./.gem.20150510-20195-1o7g0ct
+installing default ruby_http_parser libraries

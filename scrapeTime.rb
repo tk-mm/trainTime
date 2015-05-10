@@ -1,8 +1,8 @@
 # coding: utf-8
 require 'rubygems'
 require 'twitter'
-require 'open-uri'
 require 'nokogiri'
+require 'open-uri'
 
 C_KEY = 'zgfdFHTvcCd3dZnRpWGqh7vA2'
 C_SECRET = 'KB0bomQ3ejxtOMlzn4gK8sAEYsuA9iDxTRky3uT1H8wL3xKXRV'
@@ -22,28 +22,6 @@ stream_client = Twitter::Streaming::Client.new do |config|
   config.access_token = A_TOKEN
   config.access_token_secret = A_T_SECRET
 end                                           
-
-stream_client.user do |status|
-  next unless status.is_a? Twitter::Tweet
-  next if status.text.start_with? "RT"
-  if status.text =~ /^test01$/
-    t = Time.now
-    date = t.strftime("%w")
-    time = t.strftime("%H")
-    option = {"in_reply_to_status_id" => status.id.to_s }
-    tweet = "@#{status.user.screen_name} #{data(date, time)}"
-    client.update tweet, option
-  end                     
-  if status.text =~ /^test02$/
-    t = Time.now
-    date = t.strftime("%w")
-    time = t.strftime("%H")
-    option = {"in_reply_to_status_id" => status.id.to_s }
-    tmp = data(date, time)
-    tweet = "@#{status.user.screen_name} #{tmp}"
-    client.update tweet, option
-  end                         
-end
 
 # 現在時からその時間帯の電車を表示
 def data(date, time)
@@ -79,4 +57,17 @@ def data(date, time)
   text.slice!(text.length-2, text.length)
   text.slice!(0..1)
   return text
+end
+
+stream_client.user do |status|
+  next unless status.is_a? Twitter::Tweet
+  next if status.text.start_with? "RT"
+  if status.text =~ /^@hyuz_帰る$/
+    t = Time.now
+    date = t.strftime("%w")
+    time = t.strftime("%H")
+    option = {"in_reply_to_status_id" => status.id.to_s }
+    tweet = "@#{status.user.screen_name} #{time}時: #{data(date, time)}"
+    client.update tweet, option
+  end                     
 end
