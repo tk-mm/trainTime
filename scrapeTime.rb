@@ -39,7 +39,8 @@ stream_client.user do |status|
     date = t.strftime("%w")
     time = t.strftime("%H")
     option = {"in_reply_to_status_id" => status.id.to_s }
-    tweet = "@#{status.user.screen_name} #{data(date, time)}"
+    tmp = data(date, time)
+    tweet = "@#{status.user.screen_name} #{tmp}"
     client.update tweet, option
   end                         
 end
